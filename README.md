@@ -5,20 +5,7 @@ Welcome to my E-Commerce Hacker-U project. This is a fullstack project built fro
 ### Install node_modules:
 `npm i`
 
-### In order to run server side:
-## `npm run dev`
-
-- Runs the app with nodemon
-- The page will reload if you make edits
-- The print at the terminal will be purple with the message:
-
-`server run on: http://:localhost : 8181`
-
-And if there are no login errors you should see the message painted in purple:
-
-`connected to MongoDb!`
-
-### In order to run client side:
+### In order to run start server:
 `npm start`
 - `server run on: http://:localhost : 8282`
 
