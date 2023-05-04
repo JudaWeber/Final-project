@@ -1,30 +1,12 @@
-# Final-project
-# Getting Started with node server App
+ # Final project - HackerU final project
 
-## Installation
+Welcome to my E-Commerce Hacker-U project. This is a fullstack project built from scratch with frontend and backend, fully responsive to all mobiles and PC.
 
-Enter to the server folder
+### Install node_modules:
+`npm i`
 
-```bash
-cd server
-```
-
-Install the node_modules
-
-```bash
-npm i
-```
-
-## Available Scripts
-
-you can run:
-
-### `npm start`
-
-- It will run the app with node
-- The page will not reload if you make edits.
-
-### `npm run dev`
+### In order to run server side:
+## `npm run dev`
 
 - Runs the app with nodemon
 - The page will reload if you make edits
@@ -36,181 +18,99 @@ And if there are no login errors you should see the message painted in purple:
 
 `connected to MongoDb!`
 
-### Available Routes
+### In order to run client side:
+`npm start`
+- `server run on: http://:localhost : 8282`
 
-#### Register a new user
+## Postman requests documentation of my project:
+https://documenter.getpostman.com/view/23238664/2s93eVYEcz
 
-```http
-  POST /api/auth/register
-```
-the site is connected to atlas so there should be a user already registered as admin
-email: admin@gmail.com
-password: 123456aA!
-if not you can create admin through postman.
-to create a admin user please create through postman with this object:
-the rest of the users can be created through the site and be updated to admin aswell.
-{
-    "name":"admin",
-    "email":"admin@gmail.com",
-    "password":"123456aA!",
-    "phone":"0000000000",
-    "isAdmin":true
-}
+### Technologies used to create the Backend:
+* Node.js
+* mongoose
+* dotend
+* bcryptjs
+* multer
+* morgan
+* express.js
 
-#### Login a user
-
-```http
-  POST /api/auth/login
-```
-
-#### For Information about a user
-
-```http
-  GET /api/auth/userInfo
-```
-
-#### If user forget password
-
-```http
-  POST /api/auth/forgotpassword
-  
-```
-
-#### If user resets password
-
-```http
-  POST /api/resetpassword/:token
-  
-```
-
-
-#### To receive all users
-
-```http
-  GET /api/auth/showallusers
-```
-
-#### To delete user
-
-```http
-  DELETE /api/auth/deleteuser/:id
-```
-you will need to provide admin token to get an answer from this api
-
-#### To get user by id
-
-```http
-  GET /api/auth/getuserbyid/:id
-```
-you will need to provide admin token to get an answer from this api
-
-#### To update user status
-
-```http
-  PATCH /api/auth/updateuser
-```
-you will need to provide admin token to get an answer from this api
+### Technologies used to create the Frontend:
+* React
+* Bootstrap
+* CSS
+* joi-browser
+* axios
+* React-Bootstrap
+* toastify
+* JavaScript
 
 
 
+### Login as admin example:
+- Email: admin@gmail.com
+- Password: 123456aA!
 
-#### To add product
-
-```http
-  POST /api/products/add-product
-```
-you will need to provide admin token to get an answer from this api
-
-#### To get all products
-
-```http
-  GET /api/products/all-products
-  
-  #### To get  product by id
-
-```http
-  GET /api/products/getproductbyid/:id
-```
-```
- #### To update product by id
-
-```http
-  PATCH /api/products/updateproduct
-  
-  you will need to provide admin token to get an answer from this api
-```
-
-#### To delete product by id
-
-```http
-  DELETE /api/products/deleteproduct/:id
-  
-  you will need to provide admin token to get an answer from this api
-```
+### Login as user example:
+- Email: user@gmail.com
+- Password: 123456aA!
 
 
-#### To add product to cart
+There are two types of users - admin and normal user.
+#### As normal user:
+A normal user can add,edit, and remove items from cart.
 
-```http
-  POST /api/cart/addtocart
-  
-  you will need to provide token to get an answer from this api
-```
+#### As admin user:
+An admin has the ability to manage by creating new products, editing or deleting existing products, change user type (to admin), delete users.
 
-#### To add check if item exists in cart
+## Frontend:
 
-```http
-  get /api/cart/:userId/cart/:productId
-  
-```
-you will need to provide token to get an answer from this api
+#### Header - Navigation bar
+The header section includes all the links and options necessary for users to navigate the website easily, such as search bar, login and registration.
 
-#### To update quantity of product in cart
+#### Add new product
+Using the admin panel, an admin can create a new product by providing details such as the product name, image, price,and description, ensuring that customers have all the necessary information before making a purchase.
 
-```http
-  PATCH /api/cart/updatecart
-  you will need to provide token to get an answer from this api
-  
-```
-#### To update quantity of product in cart from cart
+#### Register
+The registration process involves the user entering their personal details, which are then validated by joi-browser system to ensure that the information provided is accurate and meets the website's requirements for creating an account. A new user cannot be created if email is already in use.
+I coded regex validation for both my password and email to ensure that they met the necessary requirements and provided a secure user experience.
 
-```http
-  PATCH /api/cart/updatecartfrommycartpage
-  
-```
-you will need to provide token to get an answer from this api
+#### Login
+When logging into website, users are required to provide their login credentials, which are then validated by joi-browser to ensure that the information entered is accurate and matches the user's account details.
 
-#### To get all items in cart
+#### Store page
+The store page allows users to browse and view all available products, making it easy for them to find what they are looking for and make a purchase.
 
-```http
-  GET /api/cart/my-cart
-  
-```
-you will need to provide token to get an answer from this api
+#### Search bar
+Search bar allows users to search for specific products by typing in relevant keywords, and displays a list of products that match the query along with the corresponding URL.
 
-#### To delete item from cart
+#### Cart
+Adding to cart requires login.
+The cart feature displays a list of all products that have been added by the user, along with their corresponding prices.
 
-```http
-  DELETE /api/cart/deleteitemfromcart/:id
-  
-```
-  you will need to provide token to get an answer from this api
-  
-  #### To update item from cart as admin
+#### Product card
+A product card displays all relevant information about a particular item, including product details, images, and price, while also featuring an "Add to Cart" button for easy purchasing.
 
-```http
-  PATCH /api/cart/adminupdate
-  
-```
-  you will need to provide token of admin to get an answer from this api
-  
-   #### To delete item from cart as admin
+#### Footer
+The footer section contains all the important information that customers may need, such as contact details, links to social media pages.
 
-```http
-  DELETE /api/cart/admindelete
-  
-```
-  you will need to provide token of admin to get an answer from this api
+
+#### Redux
+In my ecommerce project, I used Redux to efficiently manage the flow of data between the backend and frontend, allowing me to easily retrieve and update information from the backend as needed, and providing a centralized store for application state that could be accessed by components throughout the frontend, resulting in a more streamlined and responsive user experience.
+
+--------------------------
+## Backend:
+
+#### Hashed password
+To ensure the security of user data in the project, hashed passwords can be used in Node.js by generating a unique salt value for each password, combining the salt and password, and then using a hashing algorithm such as bcrypt to securely store the resulting hash in a database, making it virtually impossible for unauthorized users to access sensitive information even if they manage to gain access to the database.
+
+#### Backend architecture
+the backend organized using a model-view-controller (MVC) architecture, with controllers, routes, models, middlewares, and configuration files all serving specific roles in managing data and functionality within the application, allowing for a more modular and organized approach to development that makes it easier to maintain and scale the project over time.
+
+#### Authorization and authentication
+In my ecommerce project, I employed robust authentication and authorization mechanisms in the backend to ensure that only authorized users had access to sensitive data and functionality, utilizing techniques such as user authentication and role-based access control to authenticate and authorize user actions and manage access to different parts of the application based on user privileges and permissions, resulting in a more secure and reliable ecommerce platform for users and admins.
+
+#### MongoDB
+I utilized the MongoDB cloud database to store and manage all of the project's data, including user account information, and more.
 
 
 
